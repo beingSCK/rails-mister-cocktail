@@ -7,10 +7,30 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+puts "**** Seeding Database ****"
+
+puts "... preparing to fetch ... "
+require 'json'
+require 'open-uri'
+
+puts "... fetching ingredient list from TheCocktailDB.com..."
+ingredient_url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'
+ingredients = open(ingredient_url).read
+ingredients = JSON.parse(ingredients)
+ingredients = ingredients["drinks"]
+ingredients.each do |ingredient|
+  Ingredient.create(name: ingredient["strIngredient1"])
+end
+
+
+
+
+
+puts "-->Parsing ingredient list into useful array..."
+
+puts ""
 
 puts "Creating ingredients..."
-Ingredient.create(name: "lemon")
-Ingredient.create(name: "ice")
-Ingredient.create(name: "mint leaves")
+
 puts "3 ingredient created!"
 
