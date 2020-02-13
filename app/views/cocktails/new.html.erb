@@ -1,1 +1,11 @@
-<h1>Placeholder: New view for Cocktails</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-6 offset-3">
+      <h3>Name your cocktail!</h3>
+      <%= simple_form_for [@cocktail] do |f| %>
+      <%= f.input :name %>
+      <%= f.submit "Add a Cocktail", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>

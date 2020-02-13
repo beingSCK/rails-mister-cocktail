@@ -1,1 +1,8 @@
 <h1>Placeholder:  Show view for Cocktails</h1>
+<p><%= @cocktail.name %></p>
+<ul><% @cocktail.doses.each do |dose| %>
+  <li><%="#{dose.ingredient.name}: #{dose.description}"%>
+  <%= link_to "(click to remove this dose)", dose_path(dose.id), method: :delete %></li>
+  <% end %>
+  <%= link_to "Add a dose to this drink?", new_cocktail_dose_path(@cocktail.id) %>
+</ul>
